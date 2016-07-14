@@ -8,7 +8,7 @@
 #
 
 
-import socket
+import requests
 import urllib2
 from re import match
 from urllib import urlencode
@@ -26,21 +26,21 @@ class GoogleSearch:
         self.header = 'Mozilla/5.001 (windows; U; NT4.0; en-US; rv:1.0) Gecko/25250101'
         self.SOCKS5_PROXY_HOST = '127.0.0.1' 
         self.SOCKS5_PROXY_PORT = port
+        # SOCKS5 proxy is supported since Requests 2.10.0
+        self.headers={"User-Agent": "Mozilla/5.001 (windows; U; NT4.0; en-US; rv:1.0) Gecko/25250101"}
+        self.proxies = {
+            'http': "socks5://127.0.0.1:1080"
+            'https': "socks5://127.0.0.1:1080"
+        }
 
     def get_html_source(self):
         html_source = ''
 
         try:
             if self.SOCKS5_PROXY_PORT == 0:
-                request = urllib2.Request(self.url)
-                request.add_header("User-Agent", self.header)
-                html_source = urllib2.urlopen(request).read()
+                html_source = requests.get(self.url, headers=self.headers).text
             else:
-                socks.set_default_proxy(socks.SOCKS5, self.SOCKS5_PROXY_HOST, self.SOCKS5_PROXY_PORT)
-                socket.socket = socks.socksocket
-                request = urllib2.Request(self.url)
-                request.add_header("User-Agent", self.header)
-                html_source = urllib2.urlopen(request).read()
+                html_source = requests.get(self.url, headers=self.headers, proxies=self.proxies).text
         except Exception as e:
             print e
 
