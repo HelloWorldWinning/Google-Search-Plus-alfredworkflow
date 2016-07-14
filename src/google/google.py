@@ -26,11 +26,12 @@ class GoogleSearch:
         self.header = 'Mozilla/5.001 (windows; U; NT4.0; en-US; rv:1.0) Gecko/25250101'
         self.SOCKS5_PROXY_HOST = '127.0.0.1' 
         self.SOCKS5_PROXY_PORT = port
+        self.SOCKS5_PROXY = 'socks5://' + self.SOCKS5_PROXY_HOST + ':' + str(self.SOCKS5_PROXY_PORT)
         # SOCKS5 proxy is supported since Requests 2.10.0
         self.headers={"User-Agent": "Mozilla/5.001 (windows; U; NT4.0; en-US; rv:1.0) Gecko/25250101"}
         self.proxies = {
-            'http': "socks5://127.0.0.1:1080",
-            'https': "socks5://127.0.0.1:1080"
+            'http': self.SOCKS5_PROXY,
+            'https': self.SOCKS5_PROXY
         }
 
     def get_html_source(self):
