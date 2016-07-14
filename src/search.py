@@ -30,8 +30,8 @@ def alfred_items_for_query(query):
 
     search_results = google.search(query, port)
     for result in search_results:
-        title = result.get('title', '').decode('utf-8')
-        href = result.get('href', '').decode('utf-8')
+        title = result.get('title', '') #.decode('utf-8')
+        href = result.get('href', '') #.decode('utf-8')
 
         alfred_results.append(alfred.Item(
             title=title,
