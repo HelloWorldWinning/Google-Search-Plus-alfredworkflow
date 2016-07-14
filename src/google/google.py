@@ -29,7 +29,7 @@ class GoogleSearch:
         # SOCKS5 proxy is supported since Requests 2.10.0
         self.headers={"User-Agent": "Mozilla/5.001 (windows; U; NT4.0; en-US; rv:1.0) Gecko/25250101"}
         self.proxies = {
-            'http': "socks5://127.0.0.1:1080"
+            'http': "socks5://127.0.0.1:1080",
             'https': "socks5://127.0.0.1:1080"
         }
 
