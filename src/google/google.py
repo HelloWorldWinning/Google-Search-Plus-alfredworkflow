@@ -23,12 +23,12 @@ class GoogleSearch:
 
         self.query = query.encode('utf-8')
         self.url = u"http://www.google.com/search?" + urlencode({'q': self.query, 'lr': 'lang_en'})
-        self.header = 'Mozilla/5.001 (windows; U; NT4.0; en-US; rv:1.0) Gecko/25250101'
+        self.header = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36'
         self.SOCKS5_PROXY_HOST = '127.0.0.1' 
         self.SOCKS5_PROXY_PORT = port
         self.SOCKS5_PROXY = 'socks5://' + self.SOCKS5_PROXY_HOST + ':' + str(self.SOCKS5_PROXY_PORT)
         # SOCKS5 proxy is supported since Requests 2.10.0
-        self.headers={"User-Agent": "Mozilla/5.001 (windows; U; NT4.0; en-US; rv:1.0) Gecko/25250101"}
+        self.headers={"User-Agent": self.header}
         self.proxies = {
             'http': self.SOCKS5_PROXY,
             'https': self.SOCKS5_PROXY

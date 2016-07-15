@@ -38,7 +38,7 @@ def alfred_items_for_query(query):
             subtitle=href,
             attributes={
                 'uid': alfred.uid(index),
-                'arg': query + ';' + href,
+                'arg': title + ';' + href,
             },
             icon='icon.png',
         ))
