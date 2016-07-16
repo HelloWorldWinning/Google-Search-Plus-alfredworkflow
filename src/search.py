@@ -23,7 +23,6 @@ def process(query):
 
 
 def alfred_items_for_query(query):
-    index = 0
     alfred_results = []
     with open('port', 'r') as infile:
         port = int(infile.read())
@@ -37,13 +36,10 @@ def alfred_items_for_query(query):
             title=title,
             subtitle=href,
             attributes={
-                'uid': alfred.uid(index),
                 'arg': title + ';' + href,
             },
             icon='icon.png',
         ))
-
-        index += 1
 
     return alfred_results
 
