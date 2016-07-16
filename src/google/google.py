@@ -22,7 +22,7 @@ class GoogleSearch:
     def __init__(self, query, port):
 
         self.query = query.encode('utf-8')
-        self.url = u"http://www.google.com/search?" + urlencode({'q': self.query, 'lr': 'lang_en'})
+        self.url = u"https://encrypted.google.com/search?" + urlencode({'q': self.query})
         self.header = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36'
         self.SOCKS5_PROXY_HOST = '127.0.0.1' 
         self.SOCKS5_PROXY_PORT = port
