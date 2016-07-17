@@ -32,12 +32,13 @@ def alfred_items_for_query(query):
         title = result.get('title', '') #.decode('utf-8')
         href = result.get('href', '') #.decode('utf-8')
 
+        # output href & set title variable
+        attr = {}
+        attr['arg'] = "{\"alfredworkflow\": {\"arg\": \"" + href + "\", \"variables\": {\"title\": \"" + title + "\"}}}"
         alfred_results.append(alfred.Item(
             title=title,
             subtitle=href,
-            attributes={
-                'arg': href,
-            },
+            attributes=attr,
             icon='icon.png',
         ))
 
